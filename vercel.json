@@ -6,39 +6,37 @@
       "use": "@vercel/node",
       "config": {
         "maxLambdaSize": "50mb",
-        "runtime": "nodejs18.x",
-        "buildCommand": "npm install --legacy-peer-deps && npm run vercel-build",
-        "outputDirectory": "dist"
+        "runtime": "nodejs18.x"
       }
     }
   ],
   "routes": [
     {
       "src": "/uploads/(.*)",
-      "dest": "/dist/uploads/$1"
+      "dest": "/uploads/$1"
     },
     {
       "src": "/admin/(.*)",
-      "dest": "/dist/admin/$1",
+      "dest": "/admin/$1",
       "headers": {
         "Cache-Control": "public, max-age=31536000, immutable"
       }
     },
     {
       "src": "/content-manager/(.*)",
-      "dest": "/dist/content-manager/$1"
+      "dest": "/content-manager/$1"
     },
     {
       "src": "/api/(.*)",
-      "dest": "/dist/index.js"
+      "dest": "/index.js"
     },
     {
       "src": "/health",
-      "dest": "/dist/index.js"
+      "dest": "/index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/dist/index.js"
+      "dest": "/index.js"
     }
   ],
   "env": {
@@ -46,13 +44,5 @@
     "STRAPI_TELEMETRY_DISABLED": "true",
     "STRAPI_ADMIN_BACKEND_URL": "",
     "ADMIN_PATH": "/admin"
-  },
-  "build": {
-    "env": {
-      "NODE_ENV": "production",
-      "STRAPI_TELEMETRY_DISABLED": "true",
-      "STRAPI_ADMIN_BACKEND_URL": "",
-      "ADMIN_PATH": "/admin"
-    }
   }
 }
