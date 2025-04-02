@@ -8,13 +8,15 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "vercel-build": "NODE_ENV=production npm install --legacy-peer-deps && npm run build",
+    "vercel-build": "rm -rf node_modules && NODE_ENV=production npm install --legacy-peer-deps && npm run build",
     "postinstall": "node scripts/generate-secrets.js",
     "upgrade": "node scripts/upgrade.js",
     "upgrade:dry": "node scripts/upgrade.js --dry"
   },
   "dependencies": {
     "@strapi/strapi": "4.15.5",
+    "@strapi/design-system": "1.13.1",
+    "@strapi/icons": "1.13.1",
     "sqlite3": "^5.1.7",
     "postcss": "^8.4.35",
     "postcss-preset-env": "^9.3.0",
@@ -22,7 +24,9 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.3.4",
     "styled-components": "^5.2.1",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "ajv": "^8.12.0",
+    "ajv-draft-04": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
@@ -36,7 +40,7 @@
     "uuid": "c0c0c0c0-c0c0-c0c0-c0c0-c0c0c0c0c0c0"
   },
   "engines": {
-    "node": ">=18.0.0 <=20.x.x",
+    "node": "18.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
