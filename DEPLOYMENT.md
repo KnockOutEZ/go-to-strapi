@@ -17,11 +17,11 @@ This guide provides detailed instructions for deploying the Strapi backend using
    ```env
    # Database credentials (already configured in .env)
    DATABASE_CLIENT=postgres
-   DATABASE_HOST=ep-solitary-tree-a1eqio45.ap-southeast-1.pg.koyeb.app
+   DATABASE_HOST=postgres
    DATABASE_PORT=5432
-   DATABASE_NAME=koyebdb
-   DATABASE_USERNAME=koyeb-adm
-   DATABASE_PASSWORD=npg_H9NEPQKds3vY
+   DATABASE_NAME=postgres
+   DATABASE_USERNAME=postgres
+   DATABASE_PASSWORD=postgres
    DATABASE_SSL=true
    ```
 
@@ -89,11 +89,11 @@ This guide provides detailed instructions for deploying the Strapi backend using
    If using the existing PostgreSQL database, ensure these environment variables are set in the Render dashboard:
    ```
    DATABASE_CLIENT=postgres
-   DATABASE_HOST=ep-solitary-tree-a1eqio45.ap-southeast-1.pg.koyeb.app
+   DATABASE_HOST=postgres
    DATABASE_PORT=5432
-   DATABASE_NAME=koyebdb
-   DATABASE_USERNAME=koyeb-adm
-   DATABASE_PASSWORD=npg_H9NEPQKds3vY
+   DATABASE_NAME=postgres
+   DATABASE_USERNAME=postgres
+   DATABASE_PASSWORD=postgres
    DATABASE_SSL=true
    ```
 
