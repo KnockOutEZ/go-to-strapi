@@ -1,58 +1,39 @@
 {
   "name": "backend",
-  "version": "0.1.0",
   "private": true,
-  "description": "A production-ready Strapi application",
+  "version": "0.1.0",
+  "description": "A Strapi application",
   "scripts": {
-    "build": "strapi build",
-    "console": "strapi console",
-    "deploy": "strapi deploy",
-    "dev": "strapi develop",
     "develop": "strapi develop",
     "start": "strapi start",
+    "build": "strapi build",
     "strapi": "strapi",
-    "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry",
     "vercel-build": "node scripts/vercel-build.js",
-    "generate-secrets": "node scripts/generate-secrets.js",
     "postinstall": "node scripts/generate-secrets.js",
-    "prod:build": "NODE_ENV=production npm run build",
-    "prod:start": "NODE_ENV=production npm run start",
-    "prod:deploy": "npm run prod:build && npm run prod:start",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint . --ext .ts,.js",
-    "format": "prettier --write \"**/*.{ts,js,json,md}\""
+    "upgrade": "node scripts/upgrade.js",
+    "upgrade:dry": "node scripts/upgrade.js --dry"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.12.1",
-    "@strapi/plugin-users-permissions": "5.12.1",
-    "@strapi/strapi": "5.12.1",
-    "pg": "^8.14.1",
-    "pg-connection-string": "^2.7.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.0.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
+    "@strapi/strapi": "4.15.5",
+    "@strapi/plugin-users-permissions": "4.15.5",
+    "@strapi/plugin-i18n": "4.15.5",
+    "@strapi/plugin-cloud": "4.15.5",
+    "better-sqlite3": "8.6.0",
     "postcss": "^8.4.35",
     "postcss-preset-env": "^9.3.0",
-    "prettier": "^3.0.0",
-    "typescript": "^5"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.3.4"
   },
-  "engines": {
-    "node": ">=18.0.0 <=22.x.x",
-    "npm": ">=6.0.0"
+  "author": {
+    "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "a7fcb524-7566-47da-9c54-9578a5cb0e63"
-  }
+    "uuid": "c0c0c0c0-c0c0-c0c0-c0c0-c0c0c0c0c0c0"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
 }
