@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@strapi/strapi": "4.15.5",
-    "better-sqlite3": "8.6.0",
+    "sqlite3": "^5.1.7",
     "postcss": "^8.4.35",
     "postcss-preset-env": "^9.3.0",
     "react": "^17.0.2",
@@ -29,7 +29,7 @@
     "uuid": "c0c0c0c0-c0c0-c0c0-c0c0-c0c0c0c0c0c0"
   },
   "engines": {
-    "node": ">=18.0.0 <=20.x.x",
+    "node": ">=18.0.0 <=22.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
