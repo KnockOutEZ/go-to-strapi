@@ -6,11 +6,7 @@ try {
     const strapi = require('@strapi/strapi');
 
     // Force minimal mode for serverless
-    const app = strapi({
-        distDir: process.cwd(),
-        autoReload: false,
-        serveAdminPanel: true,
-    });
+    const app = strapi({ distDir: process.cwd() });
 
     // Export the Strapi instance
     module.exports = app.start();

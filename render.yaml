@@ -1,0 +1,49 @@
+services:
+  - type: web
+    name: strapi-backend
+    env: docker
+    plan: starter
+    buildCommand: docker build -t strapi-api .
+    startCommand: docker run -p $PORT:1337 --env-file .env strapi-api
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_CLIENT
+        value: postgres
+      # Use these variables for a new Render database
+      # Comment them out if using existing database credentials from .env file
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: strapi-db
+          property: host
+      - key: DATABASE_PORT
+        value: 5432
+      - key: DATABASE_NAME
+        fromDatabase:
+          name: strapi-db
+          property: database
+      - key: DATABASE_USERNAME
+        fromDatabase:
+          name: strapi-db
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: strapi-db
+          property: password
+      # Secret keys (Required in either case)
+      - key: APP_KEYS
+        generateValue: true
+      - key: API_TOKEN_SALT
+        generateValue: true
+      - key: ADMIN_JWT_SECRET
+        generateValue: true
+      - key: TRANSFER_TOKEN_SALT
+        generateValue: true
+      - key: JWT_SECRET
+        generateValue: true
+
+# Comment out this database section if using existing database credentials
+databases:
+  - name: strapi-db
+    plan: starter
+    ipAllowList: [] # Only allow connections from Render services 

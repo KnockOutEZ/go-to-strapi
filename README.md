@@ -7,7 +7,8 @@ A production-ready Strapi template with PostgreSQL, caching, and deployment conf
 - PostgreSQL database integration
 - In-memory caching for better performance
 - Production-ready security configurations
-- Vercel deployment support
+- Docker containerization
+- Render.com deployment support
 - Environment variable management
 - TypeScript support
 - Automated build and deployment scripts
@@ -16,7 +17,8 @@ A production-ready Strapi template with PostgreSQL, caching, and deployment conf
 
 - Node.js >= 18.0.0
 - PostgreSQL database
-- Vercel account (for deployment)
+- Docker (for containerized deployment)
+- Render.com account (for cloud deployment)
 
 ## Quick Start
 
@@ -61,14 +63,27 @@ DATABASE_POOL_IDLE_TIMEOUT=30000
 DATABASE_DEBUG=false
 ```
 
-## Deployment
+## Deployment Options
 
-### Vercel Deployment
+### Docker Deployment
+
+1. Make sure Docker is installed on your system
+2. Configure your `.env` file with appropriate values
+3. Build and run the Docker container:
+   ```bash
+   npm run docker:build
+   npm run docker:run
+   ```
+4. Access the Strapi admin at http://localhost:1337/admin
+
+### Render.com Deployment
 
 1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Add all environment variables in Vercel dashboard
-4. Deploy!
+2. Connect your repository to Render.com
+3. Create a new Blueprint with the following settings:
+   - Environment: Docker
+   - Branch: main (or your preferred branch)
+4. Deploy! Render will automatically use the render.yaml file
 
 ### Manual Deployment
 
@@ -95,6 +110,7 @@ DATABASE_DEBUG=false
 - Database connection pooling
 - Optimized build configuration
 - Production-ready middleware setup
+- Docker containerization for consistent environment
 
 ## Development
 

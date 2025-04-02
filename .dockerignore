@@ -1,0 +1,40 @@
+# Version control
+.git
+.gitignore
+
+# Build artifacts
+dist
+build
+.cache
+.tmp
+.strapi
+.strapi-updater.json
+
+# Node.js
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment variables
+.env*
+!.env.example
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Editor directories and files
+.idea
+.vscode
+*.swp
+*.swo
+
+# Docker
+docker-compose.yml
+Dockerfile
+.dockerignore 
