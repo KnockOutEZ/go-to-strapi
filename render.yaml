@@ -41,6 +41,9 @@ services:
         generateValue: true
       - key: JWT_SECRET
         generateValue: true
+      # CORS settings
+      - key: FRONTEND_URL
+        value: https://go-to-strapi.onrender.com
 
 # Comment out this database section if using existing database credentials
 databases:

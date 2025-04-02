@@ -22,6 +22,7 @@ RUN npm run build
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 ENV PORT=1337
+ENV FRONTEND_URL=https://go-to-strapi.onrender.com
 
 # Expose port
 EXPOSE 1337
