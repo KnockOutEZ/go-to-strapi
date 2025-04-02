@@ -1,53 +1,46 @@
 {
   "version": 2,
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "dist",
   "builds": [
     {
-      "src": "index.js",
+      "src": "dist/index.js",
       "use": "@vercel/node",
       "config": {
         "maxLambdaSize": "50mb",
         "nodeVersion": "18.x",
-        "includeFiles": [
-          "dist/**",
-          ".env",
-          "package.json",
-          "package-lock.json",
-          "config/**",
-          "database/**",
-          "public/**",
-          "src/**"
-        ]
+        "includeFiles": ["dist/**"]
       }
     }
   ],
   "routes": [
     {
       "src": "/uploads/(.*)",
-      "dest": "/uploads/$1"
+      "dest": "/dist/uploads/$1"
     },
     {
       "src": "/admin",
-      "dest": "/index.js"
+      "dest": "/dist/index.js"
     },
     {
       "src": "/admin/(.*)",
-      "dest": "/index.js"
+      "dest": "/dist/index.js"
     },
     {
       "src": "/api/(.*)",
-      "dest": "/index.js"
+      "dest": "/dist/index.js"
     },
     {
       "src": "/content-manager/(.*)",
-      "dest": "/index.js"
+      "dest": "/dist/index.js"
     },
     {
       "src": "/content-type-builder/(.*)",
-      "dest": "/index.js"
+      "dest": "/dist/index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.js"
+      "dest": "/dist/index.js"
     }
   ],
   "env": {
