@@ -21,17 +21,17 @@ try {
     console.log('🧹 Cleaning previous builds...');
     execSync('rm -rf dist build .cache .tmp', { stdio: 'inherit' });
 
-    // Install dependencies with legacy peer deps
+    // Install dependencies without legacy peer deps
     console.log('📦 Installing dependencies...');
-    execSync('npm install --legacy-peer-deps', { stdio: 'inherit' });
+    execSync('npm install', { stdio: 'inherit' });
+
+    // Explicitly install Strapi plugins
+    console.log('📦 Installing Strapi plugins...');
+    execSync('npm install @strapi/plugin-content-manager@4.15.5 @strapi/plugin-content-type-builder@4.15.5 @strapi/plugin-users-permissions@4.15.5 @strapi/plugin-i18n@4.15.5', { stdio: 'inherit' });
 
     // Generate secrets if needed
     console.log('🔑 Generating secrets...');
     execSync('node scripts/generate-secrets.js', { stdio: 'inherit' });
-
-    // Ensure PostCSS dependencies are installed
-    console.log('📦 Installing PostCSS dependencies...');
-    execSync('npm install postcss postcss-preset-env --save --legacy-peer-deps', { stdio: 'inherit' });
 
     // Build Strapi
     console.log('🏗️ Building Strapi...');
