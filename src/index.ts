@@ -9,14 +9,20 @@ export default {
    */
   register({ strapi }) {
     // Add health check endpoint
-    strapi.server.use('/health', (ctx) => {
-      ctx.body = {
-        status: 'ok',
-        timestamp: new Date().toISOString(),
-        uptime: process.uptime(),
-        memory: process.memoryUsage(),
-      };
-    });
+    strapi.server.routes([
+      {
+        method: 'GET',
+        path: '/health',
+        handler: (ctx) => {
+          ctx.body = {
+            status: 'ok',
+            timestamp: new Date().toISOString(),
+            uptime: process.uptime(),
+            memory: process.memoryUsage(),
+          };
+        },
+      },
+    ]);
   },
 
   /**

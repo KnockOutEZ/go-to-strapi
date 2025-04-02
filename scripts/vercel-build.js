@@ -17,17 +17,39 @@ dirs.forEach(dir => {
 console.log('🚀 Starting build process...');
 
 try {
-    // Clean previous builds
-    console.log('🧹 Cleaning previous builds...');
-    execSync('rm -rf dist build .cache .tmp', { stdio: 'inherit' });
+    // Clean previous builds and node_modules
+    console.log('🧹 Cleaning previous builds and installations...');
+    execSync('rm -rf dist build .cache .tmp node_modules', { stdio: 'inherit' });
 
-    // Install dependencies without legacy peer deps
-    console.log('📦 Installing dependencies...');
-    execSync('npm install', { stdio: 'inherit' });
+    // Install dependencies using npm ci for exact version matching
+    console.log('📦 Installing dependencies with npm ci...');
+    execSync('npm ci', { stdio: 'inherit' });
 
-    // Explicitly install Strapi plugins
-    console.log('📦 Installing Strapi plugins...');
-    execSync('npm install @strapi/plugin-content-manager@4.15.5 @strapi/plugin-content-type-builder@4.15.5 @strapi/plugin-users-permissions@4.15.5 @strapi/plugin-i18n@4.15.5', { stdio: 'inherit' });
+    // Ensure PostgreSQL client is installed
+    console.log('📦 Ensuring PostgreSQL client is installed...');
+    execSync('npm install pg --save', { stdio: 'inherit' });
+
+    // Double-check for Strapi plugin installation
+    console.log('🔍 Verifying Strapi plugins installation...');
+
+    const pluginsToVerify = [
+        '@strapi/plugin-content-manager',
+        '@strapi/plugin-content-type-builder',
+        '@strapi/plugin-users-permissions',
+        '@strapi/plugin-i18n'
+    ];
+
+    for (const plugin of pluginsToVerify) {
+        try {
+            // Check if the plugin package.json exists
+            require.resolve(`${plugin}/package.json`);
+            console.log(`✅ ${plugin} is properly installed`);
+        } catch (err) {
+            // If not, manually install it
+            console.log(`⚠️ ${plugin} not found, installing it...`);
+            execSync(`npm install ${plugin}@4.15.5 --no-save`, { stdio: 'inherit' });
+        }
+    }
 
     // Generate secrets if needed
     console.log('🔑 Generating secrets...');
