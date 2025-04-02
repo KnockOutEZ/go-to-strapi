@@ -1,0 +1,14 @@
+{
+  "kind": "collectionType",
+  "collectionName": "testicolas",
+  "info": {
+    "singularName": "testicola",
+    "pluralName": "testicolas",
+    "displayName": "testicola",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {}
+}
