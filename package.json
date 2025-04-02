@@ -8,7 +8,7 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "vercel-build": "strapi build",
+    "vercel-build": "NODE_ENV=production npm install --legacy-peer-deps && npm run build",
     "postinstall": "node scripts/generate-secrets.js",
     "upgrade": "node scripts/upgrade.js",
     "upgrade:dry": "node scripts/upgrade.js --dry"
