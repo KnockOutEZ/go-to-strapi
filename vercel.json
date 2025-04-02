@@ -2,30 +2,32 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/index.js",
+      "src": "package.json",
       "use": "@vercel/node",
       "config": {
         "maxLambdaSize": "50mb",
-        "runtime": "nodejs18.x"
+        "runtime": "nodejs18.x",
+        "buildCommand": "npm run vercel-build",
+        "outputDirectory": "dist"
       }
     }
   ],
   "routes": [
     {
       "src": "/health",
-      "dest": "dist/index.js"
+      "dest": "/dist/index.js"
     },
     {
       "src": "/api/(.*)",
-      "dest": "dist/index.js"
+      "dest": "/dist/index.js"
     },
     {
       "src": "/admin/(.*)",
-      "dest": "dist/index.js"
+      "dest": "/dist/index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "dist/index.js"
+      "dest": "/dist/index.js"
     }
   ],
   "env": {
