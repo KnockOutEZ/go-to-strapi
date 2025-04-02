@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "dist/index.js",
       "use": "@vercel/node",
       "config": {
         "maxLambdaSize": "50mb",
@@ -31,5 +31,11 @@
   "env": {
     "NODE_ENV": "production",
     "STRAPI_TELEMETRY_DISABLED": "true"
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production",
+      "STRAPI_TELEMETRY_DISABLED": "true"
+    }
   }
 }

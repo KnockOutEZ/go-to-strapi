@@ -29,6 +29,10 @@ try {
     console.log('🔑 Generating secrets...');
     execSync('node scripts/generate-secrets.js', { stdio: 'inherit' });
 
+    // Install PostCSS dependencies explicitly
+    console.log('�� Installing PostCSS dependencies...');
+    execSync('npm install postcss postcss-preset-env --save-dev', { stdio: 'inherit' });
+
     // Build Strapi
     console.log('🏗️ Building Strapi...');
     execSync('npm run build', { stdio: 'inherit' });
