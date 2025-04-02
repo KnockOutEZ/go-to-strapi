@@ -15,8 +15,7 @@
           "config/**",
           "database/**",
           "public/**",
-          "src/**",
-          "node_modules/**"
+          "src/**"
         ]
       }
     }
