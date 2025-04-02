@@ -6,15 +6,26 @@ module.exports = [
             contentSecurityPolicy: {
                 useDefaults: true,
                 directives: {
-                    'connect-src': ["'self'", 'https:'],
-                    'img-src': ["'self'", 'data:', 'blob:', 'https://go-to-strapi.onrender.com', 'https://strapi-backend.onrender.com'],
-                    'media-src': ["'self'", 'data:', 'blob:', 'https://go-to-strapi.onrender.com', 'https://strapi-backend.onrender.com'],
+                    'connect-src': ["'self'", 'https:', 'http:', 'ws:', 'wss:'],
+                    'img-src': ["'self'", 'data:', 'blob:', '*'],
+                    'media-src': ["'self'", 'data:', 'blob:', '*'],
                     upgradeInsecureRequests: null,
                 },
             },
         },
     },
-    'strapi::cors',
+    {
+        name: 'strapi::cors',
+        config: {
+            enabled: true,
+            origin: ['*'],
+            headers: ['*'],
+            expose: ['Content-Range', 'X-Content-Range'],
+            methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', 'HEAD'],
+            credentials: true,
+            maxAge: 86400
+        }
+    },
     'strapi::poweredBy',
     'strapi::logger',
     'strapi::query',

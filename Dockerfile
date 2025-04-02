@@ -15,17 +15,15 @@ RUN npm install --legacy-peer-deps
 # Copy the rest of the application
 COPY . .
 
-# Build the Strapi app
-RUN npm run build
-
 # Environment variables
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 ENV HOST=0.0.0.0
 ENV PORT=1337
 ENV FRONTEND_URL=https://go-to-strapi.onrender.com
+ENV PUBLIC_URL=https://strapi-backend.onrender.com
 
 # Expose port
 EXPOSE 1337
 
-# Start Strapi
-CMD ["npm", "run", "start"] 
+# Start Strapi in development mode
+CMD ["npm", "run", "develop"] 
