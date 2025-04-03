@@ -7,7 +7,9 @@ services:
     startCommand: docker run -p $PORT:1337 --env-file .env strapi-api
     envVars:
       - key: NODE_ENV
-        value: development
+        value: production
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=460
       - key: DATABASE_CLIENT
         value: postgres
       # Use these variables for a new Render database
