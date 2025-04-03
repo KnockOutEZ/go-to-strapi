@@ -9,26 +9,23 @@ COPY package*.json ./
 # Copy scripts directory first (needed for postinstall)
 COPY scripts ./scripts/
 
-# Install dependencies with production flag to reduce memory usage
-RUN npm install --legacy-peer-deps --production=false --no-optional
+# Install dependencies with optimizations to reduce memory usage
+RUN npm install --legacy-peer-deps --no-optional
 
 # Copy the rest of the application
 COPY . .
 
-# Build the Strapi app
-RUN npm run build
-
 # Environment variables
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 ENV HOST=0.0.0.0
 ENV PORT=1337
 ENV FRONTEND_URL=https://go-to-strapi.onrender.com
 ENV PUBLIC_URL=https://strapi-backend.onrender.com
 # Memory optimization for Node.js
-ENV NODE_OPTIONS="--max-old-space-size=460"
+ENV NODE_OPTIONS="--max-old-space-size=400 --optimize-for-size"
 
 # Expose port
 EXPOSE 1337
 
-# Start Strapi in production mode
-CMD ["npm", "run", "start"] 
+# Start Strapi in development mode
+CMD ["npm", "run", "develop"] 
