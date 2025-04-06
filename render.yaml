@@ -1,0 +1,49 @@
+services:
+  - type: web
+    name: strapi-backend
+    env: docker
+    plan: starter
+    buildCommand: docker build -t strapi-api .
+    startCommand: docker run -p $PORT:1337 --env-file .env strapi-api
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=400 --optimize-for-size
+      - key: DATABASE_CLIENT
+        value: postgres
+      # Database credentials from Koyeb
+      - key: DATABASE_HOST
+        value: ep-solitary-tree-a1eqio45.ap-southeast-1.pg.koyeb.app
+      - key: DATABASE_PORT
+        value: 5432
+      - key: DATABASE_NAME
+        value: koyebdb
+      - key: DATABASE_USERNAME
+        value: koyeb-adm
+      - key: DATABASE_PASSWORD
+        value: npg_H9NEPQKds3vY
+      - key: DATABASE_SSL
+        value: true
+      # Secret keys (Required in either case)
+      - key: APP_KEYS
+        generateValue: true
+      - key: API_TOKEN_SALT
+        generateValue: true
+      - key: ADMIN_JWT_SECRET
+        generateValue: true
+      - key: TRANSFER_TOKEN_SALT
+        generateValue: true
+      - key: JWT_SECRET
+        generateValue: true
+      # CORS settings
+      - key: FRONTEND_URL
+        value: https://go-to-strapi.onrender.com
+      - key: PUBLIC_URL
+        value: https://strapi-backend.onrender.com
+
+# Comment out this database section if using existing database credentials
+databases:
+  - name: strapi-db
+    plan: starter
+    ipAllowList: [] # Only allow connections from Render services
